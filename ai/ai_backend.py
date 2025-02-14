@@ -277,7 +277,8 @@ async def summarize_file(file_id: str, background_tasks: BackgroundTasks):
         }
 
         # run in background
-        background_tasks.add_task(upload_summary, BUCKET_NAME, f"{file_id}", "zh", summary.markdown)
+        upload_summary(BUCKET_NAME, f"{file_id}", "zh", summary.markdown)
+        # background_tasks.add_task(upload_summary, BUCKET_NAME, f"{file_id}", "zh", summary.markdown)
 
         return response
     except Exception as e:
@@ -327,12 +328,14 @@ def upload_corresponing_trascript_term_description(file_id: str, lang: str, back
     try:
         upload_transcript(BUCKET_NAME, file_id, lang_gcs[lang], f"results/transcript_{lang}.txt")
         # text 2 speech and upload to GCS
-        background_tasks.add_task(convert_to_speech_to_gcs, f"results/transcript_{lang}.txt", file_id, lang_gcs[lang], background_tasks)
+        convert_to_speech_to_gcs(f"results/transcript_{lang}.txt", file_id, lang_gcs[lang], background_tasks)
+        # background_tasks.add_task(convert_to_speech_to_gcs, f"results/transcript_{lang}.txt", file_id, lang_gcs[lang], background_tasks)
     except Exception as e:
         print(f"Error: {str(e)}")
         upload_transcript(BUCKET_NAME, file_id, lang_gcs[lang], f"results/{lang}_precise.txt")
         # text 2 speech and upload to GCS
-        background_tasks.add_task(convert_to_speech_to_gcs, f"results/{lang}_precise.txt", file_id, lang_gcs[lang], background_tasks)
+        convert_to_speech_to_gcs(f"results/{lang}_precise.txt", file_id, lang_gcs[lang], background_tasks)
+        # background_tasks.add_task(convert_to_speech_to_gcs, f"results/{lang}_precise.txt", file_id, lang_gcs[lang], background_tasks)
 
     if lang == "cmn-Hant-TW":
         try:
