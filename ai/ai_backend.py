@@ -11,7 +11,8 @@ from pydub import AudioSegment
 from summarizer_RAG import MeetingSummarizer    # update with stronger version RAG
 from utils import download_transcript, upload_summary, download_wav, upload_transcript, upload_term, upload_description, download_description, download_summary, upload_wav
 from audio_transcriber import AudioTranscriber
-from transcript_processor import TranscriptProcessor
+# from transcript_processor import TranscriptProcessor
+from transcript_processor_enhanced import TranscriptProcessor
 from chatbot_RAG import Chatbot
 from text_to_speech import TextToSpeech
 import uvicorn
