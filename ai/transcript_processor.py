@@ -4,10 +4,12 @@ import vertexai
 from vertexai.generative_models import GenerativeModel
 import os
 
+project_id = "hackathon-450900"
+
 class TranscriptProcessor:
     def __init__(self, transcript_text, target_language, 
                  excel_path="../dataset/Training/Knowledge Dataset.xlsx",
-                 project_id="hackathon-450410", location="us-central1"):
+                 project_id=f"{project_id}", location="us-central1"):
         """
         初始化：
           - transcript_text：逐字稿的文字內容（若原來有檔案路徑，可先自行讀檔）
