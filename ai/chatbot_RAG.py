@@ -106,7 +106,7 @@ class Chatbot:
             similar_terms = self.vector_db.find_similar_terms(query, top_k=10) if self.vector_db else []
             filtered_terms = [(entry, score) for entry, score in similar_terms if score >= similarity_threshold]
 
-            instruct_prompt = f"請以淫蕩的語氣，用繁體中文回答下列問題： \n"            
+            instruct_prompt = f"請以撒嬌並帶有一點點淫蕩的語氣，用繁體中文回答下列問題： \n"            
 
             loop = asyncio.get_running_loop()
             if filtered_terms:
