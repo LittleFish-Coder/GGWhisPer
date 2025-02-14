@@ -262,9 +262,9 @@ class TranscriptProcessor:
         # **儲存 Regex 偵測的 Proper Noun**
         regex_filename = f"./{self.dir}/term_{self.target_language}.txt"
         with open(regex_filename, "w", encoding="utf-8") as f:
-            f.write(f"Regex Proper Noun 偵測結果 (處理時間: {execution_time} 秒)\n")
+            # f.write(f"Regex Proper Noun 偵測結果 (處理時間: {execution_time} 秒)\n")
             for i, proper_noun in enumerate(proper_noun_list_regex, start=1):
-                f.write(f"{i}. {proper_noun}\n")
+                f.write(f"{proper_noun}\n")
 
         # **執行 Gemini Proper Noun 偵測**
         llm_replaced_transcript, detection_result = self.detect_proper_nouns_with_prompt(self.transcript_text)
@@ -278,11 +278,11 @@ class TranscriptProcessor:
         # **儲存 Gemini 偵測的 Proper Noun**
         gemini_detection_filename = f"./{self.dir}/gemini_detection_{self.target_language}.txt"
         with open(gemini_detection_filename, "w", encoding="utf-8") as f:
-            f.write(f"Gemini prompt Proper Noun Detection (time: {detection_result['time']})\n")
-            f.write("=" * 50 + "\n")
+            # f.write(f"Gemini prompt Proper Noun Detection (time: {detection_result['time']})\n")
+            # f.write("=" * 50 + "\n")
             for i, proper_noun in enumerate(detection_result["proper_nouns"], start=1):
-                f.write(f"{i}. {proper_noun}\n")
-            f.write("-" * 50 + "\n")
+                f.write(f"{proper_noun}\n")
+            # f.write("-" * 50 + "\n")
 
         # **儲存翻譯後的逐字稿**
         final_transcript = translated_transcript.replace("{", "").replace("}", "")
@@ -297,13 +297,14 @@ class TranscriptProcessor:
         for entry in proper_noun_list_regex:
             noun = entry
             description = self.proper_nouns_dict.get(noun, {}).get("Descriptions", {}).get(self.target_language, "N/A")
-            if noun not in proper_noun_desc:
+            
+            if noun not in proper_noun_desc and description != "N/A":
                 proper_noun_desc[noun] = description
 
         # **來自 Gemini Prompt 偵測的 Proper Nouns**
         for noun in detection_result["proper_nouns"]:
             description = self.proper_nouns_dict.get(noun, {}).get("Descriptions", {}).get(self.target_language, "N/A")
-            if noun not in proper_noun_desc:
+            if noun not in proper_noun_desc and description != "N/A":
                 proper_noun_desc[noun] = description
 
         # **儲存描述檔**

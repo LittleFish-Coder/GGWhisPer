@@ -352,7 +352,11 @@ def upload_corresponing_trascript_term_description(file_id: str, lang: str, back
                 summary = summarize_instant(file_id, content, background_tasks)
     
     # upload term
-    upload_term(BUCKET_NAME, file_id, lang_gcs[lang], f"results/term_{lang}.txt")
+    try:
+        upload_term(BUCKET_NAME, file_id, lang_gcs[lang], f"results/term_{lang}.txt")
+    except Exception as e:
+        print(f"Error: results/term_{lang}.txt - {str(e)}")
+        upload_term(BUCKET_NAME, file_id, lang_gcs[lang], f"results/gemini_detection_{lang}.txt")
     # upload description
     upload_description(BUCKET_NAME, file_id, lang_gcs[lang], f"results/description_{lang}.txt")
 
