@@ -22,6 +22,113 @@ class AudioTranscriber:
         self.ja_transcript_processor = TranscriptProcessor("", "ja-JP")
         self.de_transcript_processor = TranscriptProcessor("", "de-DE")
 
+    def transcribe_segment_enhanced(self, segment):
+        audio_content=segment.raw_data
+        audio_obj = speech.RecognitionAudio(content=audio_content)
+        #### first stage detecttion and transcribe
+        config = speech.RecognitionConfig(
+            encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+            sample_rate_hertz=segment.frame_rate,
+            language_code="en-US",
+            alternative_language_codes=["ja-JP", "de-DE", "cmn-Hant-TW"],
+            use_enhanced=True
+        )
+        response = self.client.recognize(config=config, audio=audio_obj)
+        raw_text = ""
+        chinese = ""
+        english = ""
+        japanese = ""
+        german = ""
+        print(f"len(response.results): {len(response.results)}")
+        result= response.results[0]
+        transcript = result.alternatives[0].transcript
+        # print(f"[Server] 原始辨識結果：{transcript}")
+        detection = self.translate_client.detect_language(transcript)
+        google_lang_code = detection["language"]
+        confidence = detection.get("confidence", "N/A")
+        # print(f"[Server] 偵測語言：{google_lang_code} (信心值: {confidence})")
+        lang_map = {
+            "zh-CN": "cmn-Hant-TW", 
+            "zh-TW": "cmn-Hant-TW", 
+            "cmn-Hant": "cmn-Hant-TW",
+            "en": "en-US", 
+            "en-US": "en-US",
+            "ja": "ja-JP", 
+            "ja-JP": "ja-JP",
+            "de": "de-DE", 
+            "de-DE": "de-DE"
+        }
+        detected_lang = lang_map.get(google_lang_code, "en-US")
+
+        #### second stage detection and transcribe
+        config = speech.RecognitionConfig(
+            encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+            sample_rate_hertz=segment.frame_rate,
+            language_code="en-US",
+            alternative_language_codes=[detected_lang],
+            use_enhanced=True
+        )
+        response = self.client.recognize(config=config, audio=audio_obj)
+        result= response.results[0]
+        transcript = result.alternatives[0].transcript
+        print(f"[Server] 原始辨識結果：{transcript}")
+        raw_text += transcript + "\n"
+        detection = self.translate_client.detect_language(transcript)
+        google_lang_code = detection["language"]
+        confidence = detection.get("confidence", "N/A")
+        print(f"[Server] 偵測語言：{google_lang_code} (信心值: {confidence})")
+        detected_lang = lang_map.get(google_lang_code, "en-US")
+        print(f"[Server] 轉換後的語言標籤: {detected_lang}")
+
+        # **翻譯不同語言**
+        translations = {
+            "cmn-Hant-TW": chinese,
+            "en-US": english,
+            "ja-JP": japanese,
+            "de-DE": german
+        }
+
+        for target_lang in translations.keys():
+            if detected_lang == target_lang:
+                translations[target_lang] += transcript + "\n"
+            else:
+                translation = self.translate_client.translate(transcript, target_language=target_lang)
+                translations[target_lang] += translation["translatedText"] + "\n"
+
+        chinese, english, japanese, german = translations["cmn-Hant-TW"], translations["en-US"], translations["ja-JP"], translations["de-DE"]
+
+        # **遍歷 "cmn-Hant-TW"、"en-US"、"ja-JP"、"de-DE"，偵測 proper noun**
+        proper_nouns_detected = {}
+        for lang, processor in zip(["cmn-Hant-TW", "en-US", "ja-JP", "de-DE"], [self.zh_transcript_processor, self.en_transcript_processor, self.ja_transcript_processor, self.de_transcript_processor]):
+            _, replacement_log = processor.improved_replace_proper_nouns(raw_text, lang)
+
+            # **收集 Proper Nouns 和對應描述**
+            proper_noun_entries = []
+            for entry in replacement_log:
+                noun = entry["Proper Noun"]
+                desc = entry["Description"]
+                proper_noun_entries.append(f"{noun} ({desc})" if desc else noun)
+
+            proper_nouns_detected[lang] = ", ".join(proper_noun_entries) if proper_noun_entries else ""
+
+        # **組合最終的回傳字串**
+        result_str = (
+            f"RAW: {raw_text.strip()}\n"
+            f"中文: {chinese.strip()}\n"
+            f"英文: {english.strip()}\n"
+            f"日文: {japanese.strip()}\n"
+            f"德文: {german.strip()}\n"
+            f"中文 專有名詞: {proper_nouns_detected['cmn-Hant-TW']}\n"
+            f"英文 專有名詞: {proper_nouns_detected['en-US']}\n"
+            f"日文 專有名詞: {proper_nouns_detected['ja-JP']}\n"
+            f"德文 專有名詞: {proper_nouns_detected['de-DE']}\n"
+        )
+
+        return result_str, raw_text, chinese, english, japanese, german, proper_nouns_detected["cmn-Hant-TW"], proper_nouns_detected["en-US"], proper_nouns_detected["ja-JP"], proper_nouns_detected["de-DE"]
+
+
+
+
 
     def transcribe_segment(self, segment):
         """
