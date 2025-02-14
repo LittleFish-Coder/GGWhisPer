@@ -1,0 +1,4 @@
+.DS_Store
+.env
+.exe
+shared_credentials.json 

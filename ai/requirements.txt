@@ -1,0 +1,14 @@
+fastapi
+pydantic
+uvicorn
+ffmpeg
+pydub
+python-socketio
+google-cloud-translate
+google-cloud-speech
+google-cloud-aiplatform
+vertexai
+pandas
+openpyxl
+faiss-cpu
+sentence_transformers
