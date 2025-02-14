@@ -31,30 +31,74 @@ class TranscriptProcessor:
         # 定義輸出逐字稿檔案名稱
         self.output_transcript_path = f"transcript_{self.target_language}.txt"
 
+    # def load_proper_nouns(self):
+    #     """
+    #     讀取 Excel 並建立 proper_nouns_dict
+    #     """
+    #     sheets = ["cmn-Hant-TW", "en-US", "ja-JP", "de-DE"]
+    #     # 讀取各個 sheet，並移除欄位前後空白
+    #     dfs = {sheet: pd.read_excel(self.excel_path, sheet_name=sheet).rename(columns=lambda x: x.strip())
+    #            for sheet in sheets}
+
+    #     proper_nouns_dict = {}
+    #     for idx in dfs["en-US"].index:
+    #         en_proper_noun = dfs["en-US"].loc[idx, "Proper Noun"]
+    #         if pd.notna(en_proper_noun):
+    #             proper_nouns = {}
+    #             for sheet in sheets:
+    #                 pn = dfs[sheet].loc[idx, "Proper Noun"]
+    #                 if pd.notna(pn):
+    #                     proper_nouns[sheet] = pn.strip()    # type: ignore
+    #             if proper_nouns:
+    #                 proper_nouns_dict[en_proper_noun] = {
+    #                     "Type": dfs["en-US"].loc[idx, "Type"],
+    #                     "Proper Nouns": proper_nouns,
+    #                     "Descriptions": {lang: dfs[lang].loc[idx, "Description"] for lang in sheets}
+    #                 }
+    #     return proper_nouns_dict
+
     def load_proper_nouns(self):
         """
-        讀取 Excel 並建立 proper_nouns_dict
+        讀取 Excel 並建立 `proper_nouns_dict` 和 `all_proper_nouns_dict`
+        - `proper_nouns_dict` 以 `en-US` 為 key，存入所有語言對應版本的 Proper Noun 和描述。
+        - `all_proper_nouns_dict` 允許從 **任何語言版本的 Proper Noun 找到 `en-US` key**，確保所有語言都能匹配。
         """
         sheets = ["cmn-Hant-TW", "en-US", "ja-JP", "de-DE"]
-        # 讀取各個 sheet，並移除欄位前後空白
-        dfs = {sheet: pd.read_excel(self.excel_path, sheet_name=sheet).rename(columns=lambda x: x.strip())
-               for sheet in sheets}
+        
+        # 讀取 Excel，每個 sheet 移除欄位前後空白
+        dfs = {
+            sheet: pd.read_excel(self.excel_path, sheet_name=sheet).rename(columns=lambda x: x.strip())
+            for sheet in sheets
+        }
 
         proper_nouns_dict = {}
+        all_proper_nouns_dict = {}
+
         for idx in dfs["en-US"].index:
             en_proper_noun = dfs["en-US"].loc[idx, "Proper Noun"]
+            
             if pd.notna(en_proper_noun):
                 proper_nouns = {}
+                descriptions = {}
+
                 for sheet in sheets:
                     pn = dfs[sheet].loc[idx, "Proper Noun"]
+                    desc = dfs[sheet].loc[idx, "Description"]
+
                     if pd.notna(pn):
-                        proper_nouns[sheet] = pn.strip()    # type: ignore
+                        proper_nouns[sheet] = pn.strip()  # Proper Noun
+                        all_proper_nouns_dict[pn.strip()] = en_proper_noun  # 反向映射到 `en-US`
+
+                    descriptions[sheet] = desc.strip() if pd.notna(desc) else "N/A"  # Description
+
                 if proper_nouns:
                     proper_nouns_dict[en_proper_noun] = {
                         "Type": dfs["en-US"].loc[idx, "Type"],
                         "Proper Nouns": proper_nouns,
-                        "Descriptions": {lang: dfs[lang].loc[idx, "Description"] for lang in sheets}
+                        "Descriptions": descriptions
                     }
+
+        self.all_proper_nouns_dict = all_proper_nouns_dict  # 存為類別變數，方便查找
         return proper_nouns_dict
 
 
@@ -294,23 +338,42 @@ class TranscriptProcessor:
         proper_noun_desc = {}
 
         # **來自 Regex 替換的 Proper Nouns**
-        for entry in proper_noun_list_regex:
-            noun = entry
-            description = self.proper_nouns_dict.get(noun, {}).get("Descriptions", {}).get(self.target_language, "N/A")
+        # for entry in proper_noun_list_regex:
+        #     noun = entry
+        #     description = self.proper_nouns_dict.get(noun, {}).get("Descriptions", {}).get(self.target_language, "N/A")
             
-            if noun not in proper_noun_desc and description != "N/A":
-                proper_noun_desc[noun] = description
+        #     if noun not in proper_noun_desc and description != "N/A":
+        #         proper_noun_desc[noun] = description
 
-        # **來自 Gemini Prompt 偵測的 Proper Nouns**
+        # # **來自 Gemini Prompt 偵測的 Proper Nouns**
+        # for noun in detection_result["proper_nouns"]:
+        #     description = self.proper_nouns_dict.get(noun, {}).get("Descriptions", {}).get(self.target_language, "N/A")
+        #     if noun not in proper_noun_desc and description != "N/A":
+        #         proper_noun_desc[noun] = description
+
+        # # **儲存描述檔**
+        # with open(desc_filename, "w", encoding="utf-8") as f:
+        #     for noun in sorted(proper_noun_desc.keys()):
+        #         f.write(f"{noun}: {proper_noun_desc[noun]}\n")
+
+        proper_noun_desc = {}
+
         for noun in detection_result["proper_nouns"]:
-            description = self.proper_nouns_dict.get(noun, {}).get("Descriptions", {}).get(self.target_language, "N/A")
-            if noun not in proper_noun_desc and description != "N/A":
-                proper_noun_desc[noun] = description
+            # 🔹 找到對應的 `en-US` Key
+            matched_key = self.all_proper_nouns_dict.get(noun, noun)
 
-        # **儲存描述檔**
+            # 🔹 取得目標語言的 Proper Noun 和描述
+            proper_noun_target = self.proper_nouns_dict.get(matched_key, {}).get("Proper Nouns", {}).get(self.target_language, noun)
+            description = self.proper_nouns_dict.get(matched_key, {}).get("Descriptions", {}).get(self.target_language, "N/A")
+
+            proper_noun_desc[proper_noun_target] = description
+
+        # 🔹 儲存描述檔
+        desc_filename = f"./{self.dir}/description_{self.target_language}.txt"
         with open(desc_filename, "w", encoding="utf-8") as f:
-            for noun in sorted(proper_noun_desc.keys()):
-                f.write(f"{noun}: {proper_noun_desc[noun]}\n")
+            for noun, description in proper_noun_desc.items():
+                f.write(f"{noun}: {description}\n")
+
 
         print(f"✅ Proper Noun 替換 & 翻譯完成！結果儲存至: {self.output_transcript_path}")
         print(f"✅ Proper Noun 描述已儲存至: {desc_filename}")
