@@ -174,7 +174,7 @@ async def inference_audio(audio_id: str, background_tasks: BackgroundTasks):
             └── description_language.txt
             """
             print(f"[Server] 處理 proper noun 替換與翻譯，目標語言：{lang}")
-            processor = TranscriptProcessor(total_raw, lang)
+            processor = TranscriptProcessor(total_raw, lang, project_id=project_id)
             processor.process()
             # 上傳對應語言的 transcript, term, description
             upload_corresponing_trascript_term_description(audio_id, lang, background_tasks)
