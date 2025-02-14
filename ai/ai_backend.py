@@ -311,7 +311,8 @@ app.mount("/", socket_app)
 def summarize_instant(file_id: str, content: str, background_tasks: BackgroundTasks):
     BUCKET_NAME = "hackathon-c2"
     summary = summarizer.summarize(content)
-    background_tasks.add_task(upload_summary, BUCKET_NAME, f"{file_id}", "zh", summary.markdown)
+    # background_tasks.add_task(upload_summary, BUCKET_NAME, f"{file_id}", "zh", summary.markdown)
+    upload_summary(BUCKET_NAME, f"{file_id}", "zh", summary.markdown)
     return summary.markdown
 
 def upload_corresponing_trascript_term_description(file_id: str, lang: str, background_tasks: BackgroundTasks):
