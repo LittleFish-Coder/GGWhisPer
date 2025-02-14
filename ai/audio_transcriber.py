@@ -40,62 +40,64 @@ class AudioTranscriber:
         japanese = ""
         german = ""
         print(f"len(response.results): {len(response.results)}")
-        result= response.results[0]
-        transcript = result.alternatives[0].transcript
-        # print(f"[Server] 原始辨識結果：{transcript}")
-        detection = self.translate_client.detect_language(transcript)
-        google_lang_code = detection["language"]
-        confidence = detection.get("confidence", "N/A")
-        # print(f"[Server] 偵測語言：{google_lang_code} (信心值: {confidence})")
-        lang_map = {
-            "zh-CN": "cmn-Hant-TW", 
-            "zh-TW": "cmn-Hant-TW", 
-            "cmn-Hant": "cmn-Hant-TW",
-            "en": "en-US", 
-            "en-US": "en-US",
-            "ja": "ja-JP", 
-            "ja-JP": "ja-JP",
-            "de": "de-DE", 
-            "de-DE": "de-DE"
-        }
-        detected_lang = lang_map.get(google_lang_code, "en-US")
+        if len(response.results) >0:
+            result= response.results[0]
+            transcript = result.alternatives[0].transcript
+            # print(f"[Server] 原始辨識結果：{transcript}")
+            detection = self.translate_client.detect_language(transcript)
+            google_lang_code = detection["language"]
+            confidence = detection.get("confidence", "N/A")
+            # print(f"[Server] 偵測語言：{google_lang_code} (信心值: {confidence})")
+            lang_map = {
+                "zh-CN": "cmn-Hant-TW", 
+                "zh-TW": "cmn-Hant-TW", 
+                "cmn-Hant": "cmn-Hant-TW",
+                "en": "en-US", 
+                "en-US": "en-US",
+                "ja": "ja-JP", 
+                "ja-JP": "ja-JP",
+                "de": "de-DE", 
+                "de-DE": "de-DE"
+            }
+            detected_lang = lang_map.get(google_lang_code, "en-US")
 
-        #### second stage detection and transcribe
-        config = speech.RecognitionConfig(
-            encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-            sample_rate_hertz=segment.frame_rate,
-            language_code="en-US",
-            alternative_language_codes=[detected_lang],
-            use_enhanced=True
-        )
-        response = self.client.recognize(config=config, audio=audio_obj)
-        result= response.results[0]
-        transcript = result.alternatives[0].transcript
-        print(f"[Server] 原始辨識結果：{transcript}")
-        raw_text += transcript + "\n"
-        detection = self.translate_client.detect_language(transcript)
-        google_lang_code = detection["language"]
-        confidence = detection.get("confidence", "N/A")
-        print(f"[Server] 偵測語言：{google_lang_code} (信心值: {confidence})")
-        detected_lang = lang_map.get(google_lang_code, "en-US")
-        print(f"[Server] 轉換後的語言標籤: {detected_lang}")
+            #### second stage detection and transcribe
+            config = speech.RecognitionConfig(
+                encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+                sample_rate_hertz=segment.frame_rate,
+                language_code=detected_lang,
+                alternative_language_codes=["en-US"],
+                use_enhanced=True
+            )
+            response = self.client.recognize(config=config, audio=audio_obj)
+            if len(response.results) >0:
+                result= response.results[0]
+                transcript = result.alternatives[0].transcript
+                print(f"[Server] 原始辨識結果：{transcript}")
+                raw_text += transcript + "\n"
+                detection = self.translate_client.detect_language(transcript)
+                google_lang_code = detection["language"]
+                confidence = detection.get("confidence", "N/A")
+                print(f"[Server] 偵測語言：{google_lang_code} (信心值: {confidence})")
+                detected_lang = lang_map.get(google_lang_code, "en-US")
+                print(f"[Server] 轉換後的語言標籤: {detected_lang}")
 
-        # **翻譯不同語言**
-        translations = {
-            "cmn-Hant-TW": chinese,
-            "en-US": english,
-            "ja-JP": japanese,
-            "de-DE": german
-        }
+                # **翻譯不同語言**
+                translations = {
+                    "cmn-Hant-TW": chinese,
+                    "en-US": english,
+                    "ja-JP": japanese,
+                    "de-DE": german
+                }
 
-        for target_lang in translations.keys():
-            if detected_lang == target_lang:
-                translations[target_lang] += transcript + "\n"
-            else:
-                translation = self.translate_client.translate(transcript, target_language=target_lang)
-                translations[target_lang] += translation["translatedText"] + "\n"
+                for target_lang in translations.keys():
+                    if detected_lang == target_lang:
+                        translations[target_lang] += transcript + "\n"
+                    else:
+                        translation = self.translate_client.translate(transcript, target_language=target_lang)
+                        translations[target_lang] += translation["translatedText"] + "\n"
 
-        chinese, english, japanese, german = translations["cmn-Hant-TW"], translations["en-US"], translations["ja-JP"], translations["de-DE"]
+                chinese, english, japanese, german = translations["cmn-Hant-TW"], translations["en-US"], translations["ja-JP"], translations["de-DE"]
 
         # **遍歷 "cmn-Hant-TW"、"en-US"、"ja-JP"、"de-DE"，偵測 proper noun**
         proper_nouns_detected = {}
