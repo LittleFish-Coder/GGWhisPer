@@ -252,7 +252,7 @@ class AudioTranscriber:
         for i, chunk in enumerate(chunks):
             print(f"[Server] 處理 silence chunk {i}")
             # 只累積各語系結果，不必組合即時回傳的字串
-            _, raw_text, chinese, english, japanese, german, proper_nouns_zh, proper_nouns_en, proper_nouns_ja, proper_nouns_de = self.transcribe_segment(chunk)
+            _, raw_text, chinese, english, japanese, german, proper_nouns_zh, proper_nouns_en, proper_nouns_ja, proper_nouns_de = self.transcribe_segment_enhanced(chunk)
             total_raw += raw_text + "\n"
             total_chinese += chinese + "\n"
             total_english += english + "\n"

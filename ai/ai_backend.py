@@ -85,12 +85,8 @@ async def audio_data(sid, data):
         segment = AudioSegment.from_file(audio_io, format='wav')
 
         # 處理音訊數據
-        result_str, raw_text, chinese, english, japanese, german, proper_nouns_chinese, proper_nouns_english, proper_nouns_japanese, proper_nouns_german = transcriber.transcribe_segment(segment)
+        result_str, raw_text, chinese, english, japanese, german, proper_nouns_chinese, proper_nouns_english, proper_nouns_japanese, proper_nouns_german = transcriber.transcribe_segment_enhanced(segment)
         print(result_str)
-        proper_nouns_chinese += '\n'
-        proper_nouns_english += '\n'
-        proper_nouns_japanese += '\n'
-        proper_nouns_german += '\n'
         print(f"raw_text: {raw_text}")
         print(f"chinese: {chinese}")
         print(f"english: {english}")
@@ -153,8 +149,6 @@ async def inference_audio(audio_id: str, background_tasks: BackgroundTasks):
     """Inference with audio wav file"""
     try:
         BUCKET_NAME = "hackathon-c2"
-        if not audio_id.isdigit():
-            audio_id = "Training"
         
         download_wav(BUCKET_NAME, audio_id)
         audio_path = f"./{audio_id}.wav"
@@ -250,8 +244,6 @@ async def summarize_file(file_id: str, background_tasks: BackgroundTasks):
     """Summarize transcript file"""
     try:
         BUCKET_NAME = "hackathon-c2"
-        if not file_id.isdigit():
-            file_id = "meeting_transcript"
 
         try:    # download summary from GCS first
             download_summary(BUCKET_NAME, file_id, "zh")

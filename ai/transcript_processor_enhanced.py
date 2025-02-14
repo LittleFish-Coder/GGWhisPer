@@ -362,11 +362,12 @@ class TranscriptProcessor:
             # 🔹 找到對應的 `en-US` Key
             matched_key = self.all_proper_nouns_dict.get(noun, noun)
 
-            # 🔹 取得目標語言的 Proper Noun 和描述
-            proper_noun_target = self.proper_nouns_dict.get(matched_key, {}).get("Proper Nouns", {}).get(self.target_language, noun)
-            description = self.proper_nouns_dict.get(matched_key, {}).get("Descriptions", {}).get(self.target_language, "N/A")
+            if matched_key:
+                # 🔹 取得目標語言的 Proper Noun 和描述
+                proper_noun_target = self.proper_nouns_dict.get(matched_key, {}).get("Proper Nouns", {}).get(self.target_language, noun)
+                description = self.proper_nouns_dict.get(matched_key, {}).get("Descriptions", {}).get(self.target_language, "N/A")
 
-            proper_noun_desc[proper_noun_target] = description
+                proper_noun_desc[proper_noun_target] = description
 
         # 🔹 儲存描述檔
         desc_filename = f"./{self.dir}/description_{self.target_language}.txt"
