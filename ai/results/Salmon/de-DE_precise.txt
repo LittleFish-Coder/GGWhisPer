@@ -1,0 +1,40 @@
+In Google
+
+Plattform
+
+Wir nutzen eine Vielzahl von Cloud-Diensten
+
+Um die komplette Anwendungsarchitektur zu warnen
+
+Cloud-Run
+
+Ermöglicht uns die einfache Umsetzung der Finanzplanung
+
+Und passen Sie die Ressourcen automatisch entsprechend dem Fluss an
+
+Wenn Sie einfache Funktionen ausführen müssen
+
+Cloud-Funktion
+
+Bietet eine Lösung, die keine Serververwaltung erfordert
+
+
+
+In Sachen Datenspeicherung
+
+Wolke
+
+SQL
+
+
+
+
+
+
+Artefakt
+
+Lexus
+
+
+A
+

@@ -1,0 +1,1 @@
+在 Google 平台上，我們使用多種雲端服務來構建完整的應用程式架構。Cloud Run 讓我們能夠輕鬆部署容器化應用程式，並根據流量自動調整資源。而當需要執行簡單的功能時，Cloud Function 提供了無須管理伺服器的解決方案。在資料儲存方面，Cloud SQL、Artifact Registry 和 Lexus  都可供選擇。

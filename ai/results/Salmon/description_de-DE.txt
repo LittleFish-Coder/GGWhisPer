@@ -1,0 +1,4 @@
+Artifact: N/A
+Cloud Function: Cloud Function: Ein serverloser Computing-Dienst, der es Entwicklern ermöglicht, einfache, ereignisgesteuerte Funktionen ohne Serververwaltung zu schreiben.
+Cloud Run: Cloud Run: Eine vollständig verwaltete Plattform zum Ausführen containerisierter Anwendungen. Sie unterstützt automatisches Skalieren und passt Ressourcen dynamisch an den Datenverkehr an, ideal für HTTP-gesteuerte Microservices.
+Cloud SQL: Cloud SQL: Ein vollständig verwalteter relationaler Datenbankdienst, der MySQL, PostgreSQL und SQL Server unterstützt und eine einfache Konfiguration, Wartung und Verwaltung ermöglicht.

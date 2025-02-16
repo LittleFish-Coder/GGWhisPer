@@ -1,0 +1,6 @@
+Gemini prompt Proper Noun Detection (time: 2.83 s)
+==================================================
+1. Cloud Run
+2. Cloud Function
+3. Cloud SQL
+--------------------------------------------------

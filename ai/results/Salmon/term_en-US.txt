@@ -1,0 +1,3 @@
+Regex Proper Noun 偵測結果 (處理時間: 0.0 秒)
+1. Cloud Run
+2. Cloud Function

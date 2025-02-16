@@ -1,0 +1,4 @@
+Artifact Registry: Artifact Registry 是一個管理容器映像、包和其他工件的託管服務，提供安全的存儲和版本控制。
+Cloud Function: Cloud Function 是一種無伺服器的計算服務，允許開發者撰寫簡單的單一用途功能，並根據事件觸發自動執行，無需管理伺服器基礎設施。
+Cloud Run: Cloud Run 是一個完全託管的平台，讓開發者可以運行容器化的應用程式。它支持自動擴展，根據流量需求動態調整資源，適合部署 HTTP 驅動的微服務。
+Cloud SQL: Cloud SQL 是一個完全託管的關聯式資料庫服務，支持 MySQL、PostgreSQL 和 SQL Server，可以輕鬆地配置、維護和管理資料庫。

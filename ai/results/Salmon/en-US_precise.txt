@@ -1,0 +1,40 @@
+In Google
+
+platform
+
+We use a variety of cloud services
+
+To warn the complete application architecture
+
+Cloud run
+
+Allowing us to easily deploy financial planning
+
+And automatically adjust the resources according to the flow
+
+When you need to perform simple functions
+
+Cloud function
+
+Provides a solution that does not require server management
+
+
+
+In terms of data storage
+
+cloud
+
+SQL
+
+
+
+
+
+
+artifact
+
+Lexus
+
+
+a
+
