@@ -1,0 +1,4 @@
+DDR Ratio: Defective Dies Ratio,為wafer defect的一個指標，為一個基準定義此批產品是否會報廢，而這些defect影響產品yield的程度。
+DP: Data Platform，資料收集平台，收集各種系統log並分析異常。
+大夜: 大夜
+EC: 是機台的設定值，有些能修改，因製程調機參數不同可作變動，根據製程定義，有些無法修改，像是機台的溫度都是固定的。機台交回去之前一定要檢查EC是否match母版。

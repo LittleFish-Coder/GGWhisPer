@@ -1,0 +1,60 @@
+hello everyone today we are going to discuss the issue regarding DDR ratio
+
+it was found out
+
+that the ratio on DP is quite high this week
+
+does Martin know the reason
+
+es tut mir leid
+
+ich hatte gestern Nachtschicht und habe die Angelegenheiten an Lisa über
+
+er kann den Grund erklär
+
+
+今週の TTR ショーが高すぎる 原因は LC が変更された可能性があります
+
+バスター パーツと比較したところ 温度 など
+
+十字架 かなり違っていました
+
+why was easy altered
+
+shouldn't the values align with the Master Copy
+
+can I teach the system log to identify who make the change
+
+可以
+
+我回去找一下資料
+
+additionally can it upload the change data to DP
+
+when someone does something unauthorized it can print out the data and automatically send an alert email to the relevant personnel
+
+
+好的
+
+這件是技術上沒問題但我需要回去和我老闆討論一下
+
+你為這屬於架構上的確
+
+我這邊需要新增開放選來抓漏的資料
+
+sikary那邊也需要新增Table然遺產行
+
+all right please update me on this matter next time
+
+also Martin please investigate why EC was changed and update me next time thank you
+
+alles klar ich werde die Angelegenheit weiter
+
+that concludes today's meeting thank you everyone
+
+どん
+
+ありがとうございます
+
+拜拜
+

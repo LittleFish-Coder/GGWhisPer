@@ -1,0 +1,58 @@
+Hallo zusammen, heute werden wir das Problem bezüglich DDR Ratio besprechen.
+
+Es wurde festgestellt, dass das Verhältnis auf DP diese Woche ziemlich hoch ist.
+
+Weiß Martin den Grund?
+
+Es tut mir leid, ich hatte gestern Nachtschicht und habe die Angelegenheiten an Lisa übergeben.
+
+Er kann den Grund erklären.
+
+
+Die TTR-Show diese Woche ist zu hoch. Der Grund könnte eine Änderung der LC sein.
+
+Im Vergleich zu Buster-Teilen, wie z.B. der Temperatur, gab es ziemlich große Unterschiede.
+
+
+Warum wurde "easy" geändert?
+
+Sollten die Werte nicht mit der Masterkopie übereinstimmen?
+
+Kann ich das Systemprotokoll so einstellen, dass es identifiziert, wer die Änderung vorgenommen hat?
+
+
+Ja.
+
+Ich werde die Daten überprüfen.
+
+
+Kann es die Änderungsdaten zusätzlich auf DP hochladen?
+
+Wenn jemand etwas Unbefugtes tut, kann es die Daten ausdrucken und automatisch eine Warn-E-Mail an die zuständigen Mitarbeiter senden.
+
+
+Okay.
+
+Technisch ist das kein Problem, aber ich muss das noch mit meinem Chef besprechen.
+
+Sie haben Recht, das gehört zur Architektur.
+
+Ich muss hier eine neue offene Auswahl hinzufügen, um die Daten zu erfassen.
+
+Auch bei Sikary muss eine neue Tabelle hinzugefügt werden, um das "Vermächtnis" zu verwalten.
+
+
+In Ordnung, bitte halten Sie mich in dieser Angelegenheit auf dem Laufenden.
+
+Außerdem, Martin, bitte untersuchen Sie, warum EC geändert wurde, und informieren Sie mich beim nächsten Mal. Danke.
+
+Alles klar, ich werde die Angelegenheit weiterverfolgen.
+
+Das schließt die heutige Besprechung ab. Vielen Dank an alle.
+
+
+Dong.
+
+Vielen Dank (japanisch).
+
+Auf Wiedersehen.

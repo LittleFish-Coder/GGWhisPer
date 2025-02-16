@@ -1,0 +1,4 @@
+DDR Ratio: Defective Dies Ratio: Ein Indikator für Wafer-Defekte, der bestimmt, ob ein Produktbatch verworfen wird. Diese Defekte beeinflussen die Ausbeute des Produkts.
+DP: Datenplattform: Eine Plattform zur Sammlung und Analyse von Systemlogs und Anomalien.
+Nachtschicht: Nachtschicht
+EC: Maschineneinstellungen: Einige Parameter sind anpassbar, abhängig von den Prozessanforderungen. Einige, wie die Temperatur, sind jedoch festgelegt. Vor der Rückgabe der Maschine muss überprüft werden, ob die EC mit der Vorlage übereinstimmt.
