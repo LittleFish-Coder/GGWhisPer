@@ -1,0 +1,13 @@
+Hello everyone, today we are going to discuss the issue regarding DDR Ratio. It was found that the ratio on DP is quite high this week. Does Martin know the reason?
+Es tut mir leid, ich hatte gestern Nachtschicht und habe die Angelegenheiten an Lisa übergeben. Er kann den Grund erklären.
+今週の DDR Ratio が高すぎる原因は、EC が変更された可能性があります。元のバージョンと比較したところ、温度などの数値がかなり違っていました。
+Why was EC altered? Shouldn't the values align with the master copy? Can IT check the system log to identify who made the change?
+可以，我回去撈一下資料。
+Additionally, can IT upload the change data to DP? When someone does something unauthorized, it can print out the data and automatically send an alert email to the relevant personnel.
+好的，這件事技術上沒問題，但我需要回去和我老闆討論一下，因為這屬於架構上的change，我這邊需要新增Cloud Function來抓log的資料，BigQuery那邊也需要新增table欄位才行。
+Alright, please update me on this matter next time. Also, Martin, please investigate why EC was changed and update me next time. Thank you.
+Alles klar, ich werde die Angelegenheit weiterverfolgen.
+That concludes today's meeting, thank you everyone.
+Danke.
+ありがとうございます。
+掰掰。
