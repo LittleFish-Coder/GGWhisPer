@@ -1,0 +1,101 @@
+hello everyone today's meeting is mainly to ask Ivan to introduce their new system
+
+to speed up production and reduce errors we have asked Ivan to develop the Genai platform to assist you and your daily work tasks
+
+謝謝的意思
+
+今天很高興可以和大家介紹的新系統
+
+SGP
+
+該系統包含的最愛的服務以及那個服務
+
+不只可以安全地在公司使用就那個服務
+
+各位影片像技術文件
+
+回應內容的文件
+
+上傳到系統
+
+根據sgp來整理文件內容以及問答
+
+der ein in der Fabrik hat häufig Probleme
+
+der Hauptgrund ist dass wenn sich noch waren am Port befinden der Arm zuerst waren zum Rand
+
+was häufig zu Staus führt
+
+kann dieses System das Problem lösen
+
+可以
+
+除了以身射偵測外也可以加入最愛的能力
+
+判斷何時該讓下一批貨
+
+
+新しい工場では新人が多く STB の後に何をすべき
+
+まだ スコープをどのように 修理
+
+抱え よく分かりません
+
+このシステムは私たちを助けてくれますか
+
+
+沒問題
+
+只要你們家技術文件以及流程說明整理好
+
+上傳到scp的系統
+
+AI就會處理這些資料
+
+你們就能直接問卷唉現在該做什麼了
+
+how will the upload technical documents be processed
+
+
+首先在gke帕里的生是會處理文大
+
+冰火影的model轉換成向量
+
+
+classically
+
+使用者可以透過我們複數在corum的系統還差帳號是國曆的資料
+
+放心
+
+所有服務到頭key加密來確保資料安全
+
+I haven't got
+
+できる
+
+how could system more this
+
+このシステムは新しい工場で
+
+大きい 役立ちでしょう
+
+それと ALP の問題に留意する
+
+全家Kitty
+
+熟知するよう マーティンに伝えてください
+
+
+好的我們會盡快樂的出來
+
+that concludes today's meeting
+
+thank you all for your participating
+
+danke
+
+ありがとうございます
+
+謝謝拜拜
+

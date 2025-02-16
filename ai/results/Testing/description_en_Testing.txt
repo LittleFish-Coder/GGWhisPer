@@ -1,0 +1,5 @@
+SGP: Secure GenAI Platform: Provides secure AI services.
+STB: Start to Build: Wafer is offline.
+ECCP: Engineering Change Certification Plan
+GKE: Google Kubernetes Engine: A managed Kubernetes service offering simplified cluster management, enabling easy deployment, management, and scaling of containerized applications.
+ALP: Active Load Port (ALP): When both machine ports are filled, a third batch is sent to the ALP next to the machine. Once the machine ports are cleared, the ALP uses its arm to transfer the batch onto the machine.

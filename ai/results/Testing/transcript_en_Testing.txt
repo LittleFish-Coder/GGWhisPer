@@ -1,0 +1,49 @@
+Hello everyone, today's meeting is primarily to have Ivan introduce their new system. To speed up production and reduce errors, we've asked Ivan to develop the Genai platform to assist you with your daily work tasks.
+
+The meaning of "thank you."
+
+Today, I'm pleased to introduce our new system to everyone.
+SGP
+This system includes your favorite services and that specific service.
+Not only can that service be used securely within the company,
+but you can also access video and technical documents.
+You can upload response documents to the system.
+The system organizes document content and Q&A based on SGP.
+
+The one in the factory often has problems.
+The main reason is that when there are still goods at the port, the arm moves goods to the edge first, which often leads to congestion.
+Can this system solve the problem?
+
+Yes, it can.
+In addition to existing object detection, you can also add favorite capabilities to determine when to allow the next batch of goods.
+
+In the new factory, there are many new employees. After STB, what should they do?  I still don't quite understand how to repair the scope.  Will this system help us?
+
+No problem.  As long as you organize your technical documents and process instructions and upload them to the ECCP system, the AI will process this data.  Then, you can directly ask the AI what to do next.
+
+How will the uploaded technical documents be processed?
+
+First, in GKE, the deployed service will process the documents and convert them into vectors using our language model.
+
+Classically, users can access historical data through our multi-tenant system in Corum using their account credentials.
+
+Rest assured, all services are protected with end-to-end encryption to ensure data security.
+
+I haven't got...
+[Assuming this is incomplete and should be: I haven't got it.]
+I understand.
+
+How could the system [improve/address] this? [Assuming the original intent was about improvement]
+
+This system will be very helpful in the new factory.  Also, please inform Martin to be aware of the ALP issue.
+
+[Assuming 全家Kitty is a typo and should be related to familiarization]
+Please ensure everyone is familiar with it.
+
+Okay, we will do our best.
+
+That concludes today's meeting. Thank you all for participating.
+
+Danke.
+Arigato gozaimasu.
+Thank you, goodbye.

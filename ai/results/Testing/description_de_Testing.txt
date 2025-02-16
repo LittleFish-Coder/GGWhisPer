@@ -1,0 +1,6 @@
+SGP: Sicheres GenAI-Plattform: Bietet sichere KI-Dienste.
+STB: Produktionsstart, Wafer offline
+Scrap: Ausschuss
+EC: Maschineneinstellungen: Einige Parameter sind anpassbar, abhängig von den Prozessanforderungen. Einige, wie die Temperatur, sind jedoch festgelegt. Vor der Rückgabe der Maschine muss überprüft werden, ob die EC mit der Vorlage übereinstimmt.
+GKE: Google Kubernetes Engine: Ein verwalteter Kubernetes-Dienst, der die Verwaltung von Kubernetes-Clustern vereinfacht und Entwicklern ermöglicht, containerisierte Anwendungen einfach bereitzustellen, zu verwalten und zu skalieren.
+ALP: Aktiver Ladeport (ALP): Wenn die zwei Ports der Maschine voll sind, wird die dritte Charge zum ALP geleitet. Nach Entleerung der Ports wird die Charge vom ALP zur Maschine transportiert.

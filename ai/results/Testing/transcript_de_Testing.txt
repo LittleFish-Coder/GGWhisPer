@@ -1,0 +1,77 @@
+Hallo zusammen, das heutige Meeting dient hauptsächlich dazu, dass Ivan uns das neue System vorstellt.
+
+Um die Produktion zu beschleunigen und Fehler zu reduzieren, haben wir Ivan gebeten, die Genai-Plattform zu entwickeln, um Sie und Ihre täglichen Arbeitsaufgaben zu unterstützen.
+
+Die Bedeutung von Danke.
+
+Ich freue mich, Ihnen heute das neue System vorstellen zu können.
+
+SGP
+
+Das System enthält die beliebtesten Dienste sowie diesen Dienst.
+
+Nicht nur kann dieser Dienst sicher im Unternehmen verwendet werden.
+
+Videos wie technische Dokumente.
+
+Dokumente mit Antworten.
+
+Hochladen in das System.
+
+Organisieren Sie den Dokumenteninhalt und die Fragen und Antworten gemäß SGP.
+
+Wer in der Fabrik arbeitet, hat häufig Probleme.
+
+Der Hauptgrund ist, dass, wenn sich noch Waren am Port befinden, der Arm zuerst Waren zum Rand transportiert, was häufig zu Staus führt.
+
+Kann dieses System das Problem lösen?
+
+Ja.
+
+Neben der Objekterkennung kann auch die Favoritenfunktion hinzugefügt werden, um zu beurteilen, wann die nächste Warenlieferung erfolgen soll.
+
+In der neuen Fabrik gibt es viele neue Mitarbeiter. Was ist nach STB zu tun?
+
+Wie wird Scrap repariert?
+
+Ich verstehe es nicht gut.
+
+Kann uns dieses System helfen?
+
+Kein Problem.
+
+Solange Sie Ihre technischen Dokumente und Prozessbeschreibungen gut organisiert haben und in das EC-System hochladen, wird die KI diese Daten verarbeiten.
+
+Sie können dann die KI direkt fragen, was jetzt zu tun ist.
+
+Wie werden die technischen Dokumente in EC hochgeladen und verarbeitet?
+
+Zuerst werden die Dokumente im GKE-Cluster verarbeitet und mithilfe des Modells in Vektoren umgewandelt.
+
+Klassischerweise können Benutzer über unser bestehendes System in Corum auf die Daten zugreifen, indem sie sich mit ihrem Konto anmelden.
+
+Keine Sorge, alle Dienste sind durchgängig verschlüsselt, um die Datensicherheit zu gewährleisten.
+
+Ich habe es nicht verstanden.
+
+Kann es.
+
+Wie könnte das System mehr leisten?
+
+Dieses System wird in der neuen Fabrik sehr nützlich sein.
+
+Und beachten Sie das Problem mit ALP.
+
+Bitte informieren Sie Martin, damit er sich mit diesem Thema vertraut macht.
+
+Gut, wir werden unser Bestes tun.
+
+Damit ist das heutige Meeting abgeschlossen.
+
+Vielen Dank für Ihre Teilnahme.
+
+Danke.
+
+ありがとうございます.
+
+Danke, Tschüss.

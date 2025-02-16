@@ -1,0 +1,5 @@
+SGP: Secure GenAI Platform，安全GenAI平台，提供安全的AI服務。
+STB: Start to Build，wafer下線。
+ECCP: Engineering Change Certification Plan (工程變更驗證計劃)。
+GKE: Google Kubernetes Engine，是一個託管的 Kubernetes 服務，提供簡化的 Kubernetes 群集管理，讓開發者輕鬆部署、管理和擴展容器化應用。
+ALP: Active Load Port ，當機台的兩個Port被Lot塞滿後，第三批貨先行傳至機台旁的ALP，當機台Port上的貨跑完被取走後，ALP上的貨物會藉由ALP的手臂傳至機台上。
