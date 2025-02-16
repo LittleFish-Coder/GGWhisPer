@@ -1,3 +1,0 @@
-DDR Ratio: The Defective Dies Ratio is an indicator of wafer defects and serves as a benchmark to determine whether a batch of products will be scrapped. These defects affect the product yield.
-DP: Data Platform: A data collection platform that gathers system logs and analyzes anomalies.
-night shift: night shift
