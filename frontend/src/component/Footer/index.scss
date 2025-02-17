@@ -1,0 +1,40 @@
+#footer {
+    width: 100%;
+  margin: 0;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #4CC3D9 0%, #5A87D9 100%);
+  // 使用 box-sizing 確保 padding 不會增加總寬度
+  box-sizing: border-box;
+  // 簡化 padding
+  padding: 0.95rem 6vw;
+    .leftFooter{
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        h2{
+            font-size: 1.2rem;
+            color: white;
+            margin: 0;
+        }
+        p{
+            font-size: small;
+            color: white;
+            margin: 0;
+        }
+    }
+
+    .rightFooter{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        a{
+            text-decoration: underline;
+            color: white;
+            margin-right: 2rem;
+            font-size: small;
+        }
+    }
+    
+}

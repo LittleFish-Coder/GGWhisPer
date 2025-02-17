@@ -1,0 +1,69 @@
+.recorder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1.5em;
+  
+    &__visualizer {
+      display: none;
+    }
+  
+    &__button {
+      padding: 16px;
+      width: 4em;
+      height: 4em;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+      background: linear-gradient(90deg, #4CC3D9 0%, #5A87D9 100%);
+      border: none;
+      cursor: pointer;
+  
+      &--recording {
+        background: #ef4444;
+      }
+
+      &--save {
+        margin-left: 3em;
+      }
+    }
+  
+    &__icon {
+      width: 24px;
+      height: 24px;
+      color: white;
+    }
+
+    &_info{
+        margin-left: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        vertical-align: bottom;
+        
+        .recorder__time {
+            font-size: 15px;
+            font-weight: bold;
+          }
+      
+        .recorder__status{
+          margin-top: 4px;
+          font-size: 14px;
+          font-weight: bold;
+        }
+
+    }
+
+    &__audio{
+        margin-left: 3em;
+    }
+
+    .finish{
+      margin-left: 1em;
+      font-weight: bold;
+    }
+
+    
+  }

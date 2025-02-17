@@ -1,0 +1,15 @@
+SQLAlchemy==2.0.36
+uvicorn==0.32.0
+fastapi==0.115.3
+aiosqlite==0.20.0
+pydantic==2.9.2
+greenlet==3.1.1
+PyJWT==2.9.0
+passlib==1.7.4
+python-multipart==0.0.17
+bcrypt===4.2.0
+transformers===4.46.2
+PyMySQL==1.1.0
+aiomysql==0.2.0
+cryptography==42.0.5
+google-cloud-storage

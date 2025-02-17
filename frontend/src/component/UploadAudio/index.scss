@@ -1,0 +1,116 @@
+.window{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    
+    #audioUploader{
+        position: relative;
+        margin: 0 auto;
+        padding: 30px 30px;
+        padding-right: 40px;
+        width: 40rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 1rem;
+        background-color: white;
+    
+        .above{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1em;
+            .form-group{
+                display: flex;
+                flex-direction: row;
+                margin-right: 1em;
+                h2{
+                    align-content: center;
+                    font-size: large;
+                    margin: 0em 0em;
+                    padding: 0em;
+                    margin-right: 1em;
+                    white-space: nowrap;       
+                    overflow: hidden;          
+                    text-overflow: ellipsis;    
+                }
+                input{
+                    border-radius: 0.2em;
+                    width: 20em;
+                    height: 2em;
+                    border: 0; 
+                    font-size: 15px;
+                    resize : none; 
+                    outline: none;
+                    border: solid;
+                    line-height: 2em;
+                    padding-left: 1em;
+                    border-color: #bcbcbc;
+                }
+            }
+        }
+        .below{
+            display: flex;
+            margin-bottom: 1em;
+            h2{
+                font-size: large;
+                margin: 0em 0em;
+                padding: 0em;
+                margin-right: 1em;
+                white-space: nowrap;       
+                overflow: hidden;          
+                text-overflow: ellipsis;    
+                padding-top: 0.4em;
+            }
+            textarea{
+                padding-top: 0.5em;
+                border-radius: 0.2em;
+                width: 88%;
+                height: 15em;
+                border: 0; 
+                font-size: 15px;
+                resize : none; 
+                outline: none;
+                border: solid;
+                padding-left: 1em;
+                border-color: #bcbcbc;
+            }
+            
+        }
+    
+        .btn {
+            width: auto;
+            color: black;
+            font-size: 35px;
+            padding: 4px;
+            padding-bottom: 0;
+            border: none;
+            cursor: pointer;
+          }
+          .close-btn {
+            background-color: rgba(255, 255, 255, 0);
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+          .bottom{
+            margin-top: 1em;
+            display: flex;
+            justify-content: end;
+            > button{
+              border: none;
+              padding: 8px 32px;
+              font-weight: bold;
+              font-size: 15px;
+              border-radius: 0.2em;
+              width: auto;
+              cursor: pointer;
+              background: #5A87D9;;
+            }
+            .post {
+              color: white;
+              margin-left: 1em;
+            }
+          }
+    }
+
+}

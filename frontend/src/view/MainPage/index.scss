@@ -1,0 +1,113 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); // 半透明黑色
+    z-index: 100; // 確保在大多數內容之上
+  }
+  
+#mainPage{
+    margin: 5em 10em;
+    max-width: 90vw;
+
+    .greeting{
+        margin: 0em;
+        padding:0em;
+        font-size: 2em;
+        font-weight: bold;
+        text-align: left;  // 明確設定靠左對齊
+        align-self: flex-start;  // 如果在 flex 容器中
+        margin-left: 0.2em;
+    }
+
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        .uploadButton{
+            width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 50%;
+                background: linear-gradient(90deg, #4CC3D9 0%, #5A87D9 100%);
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                margin-right: 1em;
+        }
+        p{
+            padding: 0em;
+            margin: 0em;
+            font-size: 1.5em;
+            color: #4A4A4A;
+            font-weight: bold;
+            align-content: center;
+            margin-right: 3em;
+        }
+
+    }
+
+    .audioList{
+        display: grid;
+        gap: 1.3rem;
+        a, Link {
+            text-decoration: none;  // 移除連結底線
+            color: inherit;         // 使用父元素的顏色
+            
+            &:hover {
+              text-decoration: none;  // hover 時也不顯示底線
+            }
+          }
+        
+        .audioItem {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(76, 195, 217, 0.1) ;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            
+            h3 {
+                margin: 0;
+                color: #333;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                
+            }
+            
+            span {
+                color: #666;
+                font-size: 0.9em;
+                transition: color 0.3s ease;
+            }
+
+            &:hover {
+                // 使用更淺的顏色
+                background: linear-gradient(90deg, 
+                rgba(76, 195, 217, 0.2) 0%, 
+                rgba(90, 135, 217, 0.2) 100%
+                );
+                transform: translateY(-2px);
+                
+                // 因為背景變淺了，文字保持原來的顏色
+                h3 {
+                color: #333;
+                }
+                span {
+                color: #666;
+                }
+            }
+
+        }
+    }
+}

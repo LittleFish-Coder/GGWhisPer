@@ -1,103 +1,72 @@
-# Cloud SQL 設定指南
+## Create/Start virtual environment
 
-## 步驟一：安裝 Cloud SQL Proxy
+### For windows user (Powershell)
 
-### Mac 用戶
-
-```bash
-# 方法 1：使用 Homebrew
-brew install cloud-sql-proxy
-
-# 方法 2：直接下載
-curl -o cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.8.1/cloud-sql-proxy.darwin.amd64
-chmod +x cloud-sql-proxy
-```
-
-### Windows 用戶
-
-1. 下載 [Cloud SQL Auth proxy for Windows](https://dl.google.com/cloudsql/cloud_sql_proxy_x64.exe)
-2. 將下載的檔案重新命名為 `cloud_sql_proxy.exe`
-3. 將檔案移動到專案目錄或添加到系統環境變數
-
-## 步驟二：設定 GCP 認證
-
-### Mac 用戶
-
-```bash
-# 安裝 gcloud CLI
-brew install --cask google-cloud-sdk
-```
-
-### Windows 用戶
-
-1. 從 [Google Cloud SDK 安裝頁面](https://cloud.google.com/sdk/docs/install) 下載安裝包
-2. 執行安裝程序
-3. 開啟新的終端機視窗
-
-### 所有用戶共同步驟
-
-```bash
-# 登入 Google Cloud
-gcloud auth login
-
-# 設定專案
-gcloud config set project hackathon-450410
-
-# 產生應用程式預設憑證
-gcloud auth application-default login
-```
-
-## 步驟三：啟動 Cloud SQL Proxy
-
-### Mac 用戶
-
-```bash
-cloud-sql-proxy hackathon-450410:us-central1:hackathon --port 3306
-```
-
-### Windows 用戶
-
-```bash
-cloud_sql_proxy.exe -instances=[專案ID:區域:實例名稱]=tcp:3306
-```
-
-成功啟動後會看到：
+1. Create virtual environment
 
 ```
-2025/02/10 XX:XX:XX The proxy has started successfully and is ready for new connections!
+python -m venv env
 ```
 
-## 步驟四：設定環境變數
+2. Start virtual environment
 
-1. 在專案根目錄建立 `.env` 檔案：
-
-```env
-DB_USER=root
-DB_PASS=0000
-DB_HOST=127.0.0.1
-DB_NAME=hackathon
+```
+.\env\Scripts\activate
 ```
 
-2. 確保 `.env` 已加入 `.gitignore`：
+3. Install python packages
 
-```bash
-echo ".env" >> .gitignore
+```
+pip install -r requirements.txt
 ```
 
-3. python 程式參考
+### For MacOS/Linux user
 
-```bash
-from dotenv import load_dotenv
+1. Create virtual environment
 
-# 載入環境變數
-load_dotenv()
-
-# 使用環境變數構建連線字串
-URL_DATABASE = f"mysql+aiomysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@{os.getenv('DB_HOST')}:3306/{os.getenv('DB_NAME')}"
+```
+python3 -m venv env
 ```
 
-## 重要提醒
+2. Start virtual environment
 
--   執行程式時請確保 Cloud SQL Proxy 保持運行
--   不要將 .env 檔案提交到 Git
--   定期檢查 Cloud SQL Proxy 的終端機輸出以排查問題
+```
+source env/bin/activate
+```
+
+3. Install python packages
+
+```
+pip install -r requirements.txt
+```
+
+## Startup database by Docker
+
+1.  Pull MySQL image
+
+```
+docker pull mysql:8.1
+```
+
+2. Run container
+
+```
+docker run --name tsmc_2025_careerhack -e MYSQL_USER=admin -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=tsmc_2025_careerhack -p 3306:3306 --volume tsmc_2025_careerhack:/var/lib/mysql -d mysql:8.1
+
+## Start uvicorn server
+
+```
+
+python main.py
+
+```
+
+## After starting server , to open swagger
+
+```
+
+http://127.0.0.1:8080/docs (open it on browser)
+
+```
+
+```

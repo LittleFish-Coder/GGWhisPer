@@ -1,0 +1,137 @@
+#audioInfoPage{
+    margin: 4em 6em;
+    max-width: 90vw;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap:2em;
+    overflow: hidden;
+
+    .leftSide{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .leftSideAbove{
+            margin-left: 0.5em;
+            margin-bottom: 0.5em;
+            text-align: left; 
+            align-self: flex-start;  // 如果在 flex 容器中
+            .title{
+                margin: 0em;
+                font-size: 25px;
+
+            }
+            .info{
+                font-size: 17px;
+            }
+            
+        }
+    }
+
+    .rightSide{
+        width: 40%;
+
+        .rightSideAbove{
+            display: flex;
+            flex-direction: row;
+            gap:0.5em;
+            p{
+                margin-right: 1em;
+                font-weight: bold;
+            }
+            .summaryButton{
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 50%;
+                background: linear-gradient(90deg, #4CC3D9 0%, #5A87D9 100%);
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            label.dropdownMenu {
+                position: relative;
+                display: flex;
+                gap: 0.5rem;
+                line-height: 2rem;
+                background-color:#FFFFFF;
+                text-align: center;
+
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 50%;
+                background: linear-gradient(90deg, #4CC3D9 0%, #5A87D9 100%);
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        
+                .icon{
+                    height: 1em;
+                    width: 1em;
+                }
+                > * {
+                    cursor: pointer;
+                }
+                input {
+                    display: none;
+                }
+                .mask {
+                    position: absolute;
+                    top: 100%;
+                    left: 0%;
+                    width: 7em;
+                    background-color: #FFFFFF;
+                    overflow: hidden;
+                    transition: height 0.3s;
+                    cursor: default;
+                    .content {
+                        display: flex;
+                        flex-direction: column;
+                        > div {
+                            transition: background-color 0.3s;
+                            p {
+                                font-size: 16px;
+                                margin: 0 auto;
+                                width: 7em;
+                                color: black;
+                                cursor: pointer;
+                                transition: color 0.3s;
+                            }
+                        }
+                        > div:has(p:hover) {
+                            background-color: #5A87D9;
+                            p {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            label.dropdownMenu:has(input:not(:checked)) {
+                .mask {
+                    height: 0;
+                    border: none;
+                }
+            }
+            label.dropdownMenu:has(input:checked) {
+                .mask {
+                    height: calc(2rem* var(--length));
+                    border: 1px solid #474141;
+                }
+            }
+        }
+
+    }
+
+    
+}

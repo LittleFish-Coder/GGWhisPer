@@ -1,0 +1,130 @@
+.transcript-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    height: 25em;
+    
+    .transcript-container {
+      border: 1px solid #ccc;
+      border-right: none;
+      
+      .language-switcher {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        border-bottom: 1px solid #ccc;
+        
+        .lang-btn {
+          padding: 0.5rem;
+          border: none;
+          border-right: 1px solid #ccc;
+          background: none;
+          cursor: pointer;
+          width: 100%;
+          font-size: medium;
+          font-weight: bold;
+          
+          &:last-child {
+            border-right: none;
+          }
+          
+          &.inactive {
+            background: white;
+            color: black;
+          }
+
+          &.active {
+            background: #5A87D9;
+            color: white;
+          }
+          
+          &:hover:not(.active) {
+            background: #f0f0f0;
+          }
+        }
+      }
+      
+      .transcript-content {
+        font-size: medium;
+        text-align: left;  // 明確設定靠左對齊
+        align-self: flex-start;  // 如果在 flex 容器中
+        max-height: 20em;
+        padding: 1rem;
+        overflow-y: auto;
+      }
+    }
+  
+    .terminology-container {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+
+      .terminology-term{
+        font-weight: bold;
+        font-size: large;
+        padding: 0em;
+        margin:0em;
+      }
+      
+      .term-navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        
+        .nav-btn {
+          background: #5A87D9;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          padding: 0.5rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          &:hover:not(:disabled) {
+            background: #f0f0f0;
+          }
+          
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+        
+          .term-card {
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: white;
+            min-width: 200px;
+            min-height: 150px;
+            
+            .term-title {
+                font-size: 1.1rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+                overflow: hidden;
+            }
+            
+            .term-description {
+                font-size: 0.9rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+                overflow: hidden;
+            }
+        }
+      }
+      
+      .term-counter {
+        text-align: center;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+  }
