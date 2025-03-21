@@ -8,7 +8,7 @@
 Our products(GGWhisPer) is a real-time translation system that can help enterprises to communicate with their foreign clients or partners. GGWhisPer can translate the spoken language into text and then translate it into the target language. It can also translate the text into the target language and then convert it into speech. GGWhisPer can help enterprises to communicate with their foreign clients or partners more effectively and efficiently.
 
 ## System Architecture
-Check our [presentation](./presentation/C2_v1.pdf) for more details!
+Check our [presentation](https://www.canva.com/design/DAGf0Ska8Rw/qc3iNUhdLBuVhjDt9TmdjA/edit?utm_content=DAGf0Ska8Rw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) for more details!
 
 ![System Architecture](./presentation/Architecture/SystemArchitecture.png)
 
